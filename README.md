@@ -40,7 +40,8 @@ public class DefaultMethodDefinition {
 
 Lambda expressions are introduced in Java 8 and are touted to be the biggest feature of Java 8. Lambda expression facilitates functional programming, and simplifies the development a lot.
 A lambda expression is characterized by the following syntax.
-```parameter -> expression body
+``` 
+parameter -> expression body
 ```
 
 Following are the important characteristics of a lambda expression.
@@ -66,7 +67,50 @@ Collections.sort(names, new Comparator<String>() {
 ```
 
 after
-```JAVA
+```java
 Collections.sort(names, (a, b) -> a.compareTo(b) );
+
+```
+
+
+other example using Anonymous Inner Class
+```java
+
+
+// Functional interface : it has only 1 abstract method
+
+interface A {
+	void show(String s);
+}
+
+public class Lambda2 {
+
+	public static void main(String[] args) {
+	 A obj;
+	 
+	 obj = s ->  System.out.println("Hi " + s);
+	 obj.show("ahmed");
+	}
+}
+
+```
+
+
+## Functional Interfaces
+
+Functional interfaces have a single functionality to exhibit. For example, a Comparable interface with a single method ‘compareTo’ is used for comparison purpose. Java 8 has defined a lot of functional interfaces to be used extensively in lambda expressions. Following is the list of functional interfaces defined in java.util.Function package.
+
+[See more](https://www.tutorialspoint.com/java8/java8_functional_interfaces.htm)
+
+```java
+
+@FunctionalInterface
+interface Converter<F, T> {
+    T convert(F from);
+}
+
+Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
+Integer converted = converter.convert("123");
+System.out.println(converted);    // 123
 
 ```
