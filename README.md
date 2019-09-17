@@ -128,4 +128,35 @@ List<String> list = Arrays.asList("d", "b", "c", "a");
 
 list.sort(String::compareToIgnoreCase);
 System.out.println(list); // [a, b, c, d]
-        ```
+```
+
+## Lambda Scope
+
+Accessing local variables
+
+```java
+final int num = 1; // we can used without final
+Converter<Integer, String> stringConverter =
+        (from) -> String.valueOf(from + num);
+
+stringConverter.convert(2);     // 3
+
+```
+
+## Optionals
+
+Optional is a new core library data type that is designed to provide a better alternative to null
+
+[See more](https://www.tutorialspoint.com/java8/java8_optional_class.htm)
+
+```java 
+Optional<String> optional = Optional.of("test");
+
+optional.isPresent();           // true
+optional.get();                 // "test"
+optional.orElse("fallback");    // "test"
+
+optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "t"
+
+```
+
