@@ -114,3 +114,18 @@ Integer converted = converter.convert("123");
 System.out.println(converted);    // 123
 
 ```
+
+
+## Method and Constructor References
+
+Method references help to point to methods by their names. A method reference is described using "::" symbol. A method reference can be used to point the following types of methods
+[see more](https://www.tutorialspoint.com/java8/java8_method_references.htm)
+
+```java
+
+List<String> list = Arrays.asList("d", "b", "c", "a");
+// list.sort((a, b)->a.compareToIgnoreCase(b));
+
+list.sort(String::compareToIgnoreCase);
+System.out.println(list); // [a, b, c, d]
+        ```
