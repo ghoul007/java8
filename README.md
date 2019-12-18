@@ -216,3 +216,59 @@ sc
     .forEach(System.out::println);
     // A1, A2
 ```
+
+## Match 
+check whether a certain predicate matches the stream
+
+```java 
+boolean anyStartsWithA =
+        sc
+        .stream()
+        .anyMatch((s) -> s.startsWith("a"));
+
+System.out.println(anyStartsWithA);      // true
+
+boolean allStartsWithA =
+        sc
+        .stream()
+        .allMatch((s) -> s.startsWith("a"));
+
+System.out.println(allStartsWithA);      // true
+
+boolean noneStartsWithZ =
+        sc
+        .stream()
+        .noneMatch((s) -> s.startsWith("z"));
+
+System.out.println(noneStartsWithZ);      // true
+
+```
+
+## Count 
+Count is a terminal operation returning the number of elements in the stream
+
+```java
+long startsWithA =
+        sc
+        .stream()
+        .filter((s) -> s.startsWith("b"))
+        .count();
+
+System.out.println(startsWithA);    // 2
+```
+## Reduce 
+
+reduction on the elements of the stream with the given function
+
+```java 
+Optional<String> reduced =
+        sc
+        .stream()
+        .sorted()
+        .reduce((s1, s2) -> s1 + "#" + s2);
+
+reduced.ifPresent(System.out::println);
+// "a1#a2"
+
+```
+
