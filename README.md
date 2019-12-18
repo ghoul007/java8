@@ -160,3 +160,59 @@ optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "t"
 
 ```
 
+## Stream
+
+In java, java.util.Stream represents a stream on which one or more operations can be performed. Stream operations are either intermediate or terminal. While terminal operations return a result of a certain type, intermediate operations return the stream itself so you can chain multiple method calls in a row. Streams are created on a source, e.g. a java.util.Collection like lists or sets (maps are not supported). Stream operations can either be executed sequential or parallel.
+
+[See more](https://howtodoinjava.com/java8/java-streams-by-examples/)
+
+[Tutorial](https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/)
+
+
+```java 
+List<String> sc = new ArrayList<>();
+sc.add("a2");
+sc.add("b");
+sc.add("c");
+sc.add("a1");
+```
+
+we can create streams either by calling
+
+```java
+sc.stream()
+sc.parallelStream()
+```
+ ### Filter 
+Filter accepts a predicate to filter all elements of the stream
+ ```java
+ sc
+    .stream()
+    .filter((s) -> s.startsWith("a"))
+    .forEach(System.out::println);
+    // a2, a1
+    
+```
+
+### Sorted 
+Returns a sorted view of the stream
+
+```java
+stringCollection
+    .stream()
+    .sorted()
+    .filter((s) -> s.startsWith("a"))
+    .forEach(System.out::println);
+      // a1, a2
+```
+
+### Map 
+Converts each element into another object via the given function
+```java
+sc
+    .stream()
+    .map(String::toUpperCase)
+    .sorted((a, b) -> b.compareTo(a))
+    .forEach(System.out::println);
+    // A1, A2
+```
