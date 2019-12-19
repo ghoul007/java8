@@ -324,3 +324,37 @@ System.out.println(String.format("sequential sort took: %d ms", millis));
 
 ```
 
+## Method Reference 
+Method reference is used to refer method of functional interface. It is compact and easy form of lambda expression. Each time when you are using lambda expression to just referring a method, you can replace your lambda expression with method reference
+```java
+
+interface Parser{
+
+	String parse(String str);
+}
+
+class StringParser{
+	public static String convert(String s) {
+		return s.toUpperCase();
+	}
+}
+
+class MyPrinter{
+	public void print(String s, Parser p) {
+		s = p.parse(s);
+        System.out.println(s);
+	}
+}
+
+
+public class MethRef {
+
+	public static void main(String[] args) {
+       String str = "inn";
+
+	   MyPrinter myPrinter = new MyPrinter();
+		myPrinter.print(str, StringParser::convert);
+	}
+
+}
+```
